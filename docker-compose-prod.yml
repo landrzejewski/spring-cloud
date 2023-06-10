@@ -1,0 +1,144 @@
+version: '3'
+services:
+  admin-server:
+    image: training/admin-server
+    restart: always
+    environment:
+      SERVER_PORT: 8090
+  zookeeper-server:
+    image: wurstmeister/zookeeper
+    restart: always
+  kafka-server:
+    image: wurstmeister/kafka
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: kafka-server
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
+  configuration-server:
+    image: training/configuration-server
+    restart: always
+    environment:
+      PORT: 8888
+      GIT_URI: https://github.com/landrzejewski/spring-cloud-training
+      KAFKA_BROKERS: kafka-server
+      ENCRYPT_KEY: summwitockey
+  discovery-server:
+    image: training/discovery-server
+    restart: always
+    environment:
+      PROFILE: production
+      CONFIGURATION_SERVER: optional:configserver:http://configuration-server:8888
+    ports:
+      - "8761:8761"
+  gateway-server:
+    image: training/gateway-server
+    restart: always
+    environment:
+      PROFILE: production
+      CONFIGURATION_SERVER: optional:configserver:http://configuration-server:8888
+    ports:
+      - "8080:8080"
+  elastic-server:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
+    restart: always
+    container_name: elasticsearch
+    environment:
+      discovery.type: "single-node"
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9300:9300"
+      - "9200:9200"
+  logstash-server:
+    image: docker.elastic.co/logstash/logstash:7.14.1
+    restart: always
+    depends_on:
+      - elastic-server
+    container_name: logstash
+    command:
+      logstash -f /etc/logstash/conf.d/logstash.conf
+    volumes:
+      - ./configuration-files/logstash.conf:/etc/logstash/conf.d/logstash.conf
+    ports:
+      - "5000:5000"
+  kibana-server:
+    image: docker.elastic.co/kibana/kibana:7.14.1
+    restart: always
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://elastic-server:9300
+    ports:
+      - "5601:5601"
+  zipkin-server:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    # 1) wsl -d docker-desktop
+    # 2) sysctl -w vm.max_map_count=262144
+  warehouse-service:
+    image: training/warehouse-service
+    restart: always
+    environment:
+      PROFILE: production
+      CONFIGURATION_SERVER: optional:configserver:http://configuration-server:8888
+  postgres-server:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=shop
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - PGDATA=/var/lib/postgresql/data/application
+      - POSTGRES_INITDB_WALDIR=/data
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data/application
+      - ./data/postgres_data:/data
+  keycloak-server:
+    image: quay.io/keycloak/keycloak:20.0.1
+    command:
+      - start-dev
+    ports:
+      - "8100:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: "postgres-server"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_DATABASE: "shop"
+  alertmanager-server:
+    image: prom/alertmanager
+    restart: always
+    ports:
+      - "9093:9093"
+      - "6831:6831"
+    volumes:
+      - ./configuration-files/alertmanager.yml:/etc/prometheus/alertmanager.yml
+  prometheus-server:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configuration-files/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./configuration-files/rules.yml:/etc/prometheus/rules.yml
+  grafana-server:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./configuration-files/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+  portainer:
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "10005:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/portainer:/data
