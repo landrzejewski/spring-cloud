@@ -27,4 +27,4 @@ spring:
 #                  kafka:
 #                    binder:
 #                      brokers: localhost:9092
-discount: 10
+discount: 20
