@@ -84,4 +84,4 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8888/base/payments-service-development.yml
+GET http://localhost:8889/base/payments-service-development.yml

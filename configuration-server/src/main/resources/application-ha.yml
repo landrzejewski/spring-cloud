@@ -1,2 +1,5 @@
 server:
   port: 8889
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/config2.db
