@@ -1,6 +1,8 @@
 server:
   port: 8888
 spring:
+  profiles:
+    active: jdbc,git
   cloud:
     config:
       server:
@@ -9,3 +11,20 @@ spring:
           skip-ssl-validation: true
           try-master-branch: false
           search-paths: configuration-files
+          order: 1
+        jdbc:
+          order: 0
+          sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
+
+  datasource:
+    url: jdbc:h2:file:./data/config.db
+    username: admin
+    password: admin
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+
