@@ -35,7 +35,7 @@ public class RequestLoggerGatewayFilterFactory extends AbstractGatewayFilterFact
         private String name = RequestLoggerGatewayFilterFactory.class.getName();
 
         public void setLevel(String level) {
-            this.level = Level.parse(level);
+            this.level = Level.parse(level.toUpperCase());
         }
 
         public void setName(String name) {
