@@ -65,3 +65,19 @@ Content-Type: application/json
 {
   "value": "200 PLN"
 }
+
+###
+
+POST http://localhost:20000/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "entries": [
+    {
+      "productId": 1,
+      "quantity": 4,
+      "price": 2000
+    }
+  ]
+}
