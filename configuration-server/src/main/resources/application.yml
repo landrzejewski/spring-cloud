@@ -11,9 +11,9 @@ spring:
           skip-ssl-validation: true
           try-master-branch: false
           search-paths: configuration-files
-          order: 1
-        jdbc:
           order: 0
+        jdbc:
+          order: 1
           sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
 
   datasource:
