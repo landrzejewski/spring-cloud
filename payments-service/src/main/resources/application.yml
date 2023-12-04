@@ -1,11 +1,14 @@
 spring:
-  application:
-    name: payments-service
-  config:
-    import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
-  cloud:
-    config:
-      label: 001-Base-components
-      #fail-fast: true
-  profiles:
-    active: development
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    open-in-view: false
+  messages:
+    basename: exceptions
+logging:
+  level:
+    org.javamoney.moneta: OFF
