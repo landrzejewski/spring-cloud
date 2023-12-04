@@ -56,3 +56,12 @@ Content-Type: application/json
   "value": "200 PLN"
 }
 
+###
+
+POST http://localhost:8080/PAYMENTS-SERVICE/payments
+Accept: application/json
+Content-Type: application/json
+
+{
+  "value": "200 PLN"
+}
