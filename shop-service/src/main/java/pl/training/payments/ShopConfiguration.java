@@ -17,6 +17,7 @@ public class ShopConfiguration {
     }
 
     @LoadBalanced
+    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }

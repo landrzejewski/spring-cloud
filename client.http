@@ -85,3 +85,21 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8889/base/payments-service-development.yml
+
+###
+
+###
+
+POST http://localhost:8080/api/shop/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "entries": [
+    {
+      "productId": 1,
+      "quantity": 4,
+      "price": 2000
+    }
+  ]
+}
