@@ -1,8 +1,8 @@
 server:
   port: 8888
 spring:
-  profiles:
-    active: jdbc,git
+#  profiles:
+#    active: jdbc,git
   cloud:
     config:
       server:
@@ -12,9 +12,9 @@ spring:
           try-master-branch: false
           search-paths: configuration-files
           order: 0
-        jdbc:
-          order: 1
-          sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
+#        jdbc:
+#          order: 1
+#          sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
   datasource:
     url: jdbc:h2:file:./data/config.db
     username: admin
