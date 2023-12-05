@@ -1,2 +1,4 @@
 server:
   port: 20000
+api:
+  payments: http://PAYMENTS-SERVICE/payments
