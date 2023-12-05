@@ -3,14 +3,11 @@ package pl.training.payments.adapters.payments;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
 import pl.training.payments.ports.PaymentsService;
 
 import java.util.Optional;
 
-@Primary
 @Component
 @Log
 @RequiredArgsConstructor
