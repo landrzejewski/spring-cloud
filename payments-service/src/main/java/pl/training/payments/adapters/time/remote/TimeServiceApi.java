@@ -9,5 +9,4 @@ public interface TimeServiceApi {
     @GetMapping
     TimestampDto getTime();
 
-
 }
