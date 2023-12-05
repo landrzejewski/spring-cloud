@@ -31,11 +31,6 @@ public class PaymentsConfiguration {
     }
 
     @Bean
-    public TimeProvider systemTimeProvider() {
-        return new SystemTimeProvider();
-    }
-
-    @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
