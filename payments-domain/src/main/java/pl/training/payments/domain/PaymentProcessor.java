@@ -6,6 +6,7 @@ import org.javamoney.moneta.Money;
 import pl.training.payments.commons.Atomic;
 import pl.training.payments.commons.Page;
 import pl.training.payments.commons.ResultPage;
+import pl.training.payments.ports.EventEmitter;
 import pl.training.payments.ports.PaymentRepository;
 import pl.training.payments.ports.PaymentService;
 import pl.training.payments.ports.TimeProvider;
@@ -19,12 +20,17 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentFeeCalculator paymentFeeCalculator;
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
+    private final EventEmitter eventEmitter;
 
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var paymentValue = calculatePaymentValue(paymentRequest.getValue());
         var payment = createPayment(paymentValue);
         log.info("Payment created " + payment);
+        var event = new PaymentUpdatedEvent();
+        event.setPaymentId(payment.getId());
+        event.setPaymentStatus(payment.getStatus());
+        eventEmitter.emit(event);
         return paymentsRepository.save(payment);
     }
 

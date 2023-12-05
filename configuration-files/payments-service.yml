@@ -9,5 +9,13 @@ spring:
     open-in-view: false
   messages:
     basename: exceptions
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        payments-out-0:
+          destination: payment-events
 api:
   time: http://worldtimeapi.org/api/timezone/Europe/Warsaw
