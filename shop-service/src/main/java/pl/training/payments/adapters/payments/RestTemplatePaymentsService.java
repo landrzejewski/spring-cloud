@@ -14,7 +14,7 @@ import pl.training.payments.ports.PaymentsService;
 import java.net.URI;
 import java.util.Optional;
 
-@Primary
+//@Primary
 @Component
 @Log
 @RequiredArgsConstructor
