@@ -24,3 +24,5 @@ spring:
     console:
       enabled: true
 
+encrypt:
+  key: SYMWWOQWCFEY

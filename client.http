@@ -110,3 +110,48 @@ POST http://localhost:8888/monitor
 Content-Type: application/x-www-form-urlencoded
 
 path=shop-service
+
+###
+
+###
+
+POST http://localhost:8888/encrypt
+Content-Type: text/plain
+
+20
+
+###
+
+POST http://localhost:8888/decrypt
+Content-Type: text/plain
+
+b8fe00fe431ce1eaf7b62bbfc93569dcc0258206fd2c0f3c922431f3e453f0e4
+
+###
+
+//@no-redirect
+//@no-cookie-jar
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=shop&grant_type=password&username=client&password=123
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
+
+###
+
+//@no-redirect
+//@no-cookie-jar
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=shop&grant_type=refresh_token&refresh_token={{ refreshToken }}
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
+
