@@ -113,6 +113,28 @@ path=shop-service
 
 ###
 
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=training-client&grant_type=password&username=admin&password=admin
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
+
+###
+
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=training-client&grant_type=refresh_token&refresh_token={{refreshToken}}
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
+
 ###
 
 POST http://localhost:8888/encrypt
@@ -125,33 +147,8 @@ Content-Type: text/plain
 POST http://localhost:8888/decrypt
 Content-Type: text/plain
 
-b8fe00fe431ce1eaf7b62bbfc93569dcc0258206fd2c0f3c922431f3e453f0e4
+abb1ccca50bee79b98939159e9df13bf4f9715aa23fa6d0d305936bfb977b96a
 
 ###
 
-//@no-redirect
-//@no-cookie-jar
-POST http://localhost:8100/realms/training/protocol/openid-connect/token
-Content-Type: application/x-www-form-urlencoded
-
-client_id=shop&grant_type=password&username=client&password=123
-
-> {%
-    client.global.set('token', response.body.access_token);
-    client.global.set('refreshToken', response.body.refresh_token);
-%}
-
-###
-
-//@no-redirect
-//@no-cookie-jar
-POST http://localhost:8100/realms/training/protocol/openid-connect/token
-Content-Type: application/x-www-form-urlencoded
-
-client_id=shop&grant_type=refresh_token&refresh_token={{ refreshToken }}
-
-> {%
-    client.global.set('token', response.body.access_token);
-    client.global.set('refreshToken', response.body.refresh_token);
-%}
-
+GET http://localhost:8888/main/shop-service-development.properties
