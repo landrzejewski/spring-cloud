@@ -27,4 +27,4 @@ spring:
 #                      brokers: localhost:9092
 api:
   payments: http://PAYMENTS-SERVICE/payments
-discount: 30
+discount: 20

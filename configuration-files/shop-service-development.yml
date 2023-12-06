@@ -4,7 +4,7 @@ spring:
       client:
         config:
           PAYMENTS-SERVICE: #default:
-            logger-level: basic
+            logger-level: headers
 logging:
   level:
     #org.springframework.web.client.RestTemplate: DEBUG
