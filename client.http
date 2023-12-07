@@ -71,6 +71,7 @@ Content-Type: application/json
 POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
+Authorization: Bearer {{ token }}
 
 {
   "entries": [
