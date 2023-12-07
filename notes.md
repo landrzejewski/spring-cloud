@@ -88,3 +88,7 @@
 
 10. **Ochrona środowiska**
     - Infrastruktura hostingowa powinna być energooszczędna lub oparta na zielonej energii, minimalizując wpływ na środowisko.
+
+
+
+Pol@nD2023LsYp
