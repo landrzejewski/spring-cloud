@@ -6,3 +6,5 @@ spring:
   cloud:
     config:
       label: base
+encrypt:
+  key: SYMWWOQWCFEY

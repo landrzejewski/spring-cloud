@@ -12,7 +12,9 @@ spring:
           try-master-branch: false
           search-paths: configuration-files
           order: 0
-#        jdbc:
+        encrypt:
+          enabled: false
+  #        jdbc:
 #          order: 1
 #          sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
   datasource:
