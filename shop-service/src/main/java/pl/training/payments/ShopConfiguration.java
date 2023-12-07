@@ -2,6 +2,7 @@ package pl.training.payments;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -14,6 +15,7 @@ import pl.training.payments.domain.DiscountCalculator;
 import pl.training.payments.domain.OrderProcessor;
 import pl.training.payments.ports.PaymentsService;
 import pl.training.payments.ports.ShopService;
+import pl.training.payments.security.RestTemplateTokenInterceptor;
 
 import java.util.function.Consumer;
 
@@ -27,12 +29,6 @@ public class ShopConfiguration {
         return new OrderProcessor(paymentsService, discountCalculator);
     }
 
-    @LoadBalanced
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
     @RefreshScope
     @Bean
     public DiscountCalculator discountCalculator(@Value("${discount}") long value) {
@@ -44,4 +40,13 @@ public class ShopConfiguration {
     public Consumer<PaymentEventDto> paymentEventsConsumer() {
         return event -> log.info("New payment update: " + event.getPaymentId());
     }
+
+    @LoadBalanced
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplateBuilder()
+                .additionalInterceptors(new RestTemplateTokenInterceptor())
+                .build();
+    }
+
 }
