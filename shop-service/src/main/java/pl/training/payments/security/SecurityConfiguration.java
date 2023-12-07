@@ -21,6 +21,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(config -> config
                         .anyRequest().hasRole("ADMIN")
                 )
+                .oauth2Login(config -> {})
                 .oauth2ResourceServer(config -> config
                         .jwt(this::jwtConfigurer)
                 )
