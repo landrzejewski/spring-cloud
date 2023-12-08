@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: echo-server-service
+  namespace: training
+spec:
+  type: LoadBalancer
+  selector:
+    app-name: echo-server
+  #clusterIP: 17.16.109.100
+  #externalTrafficPolicy: Cluster
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30000
