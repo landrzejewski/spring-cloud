@@ -28,22 +28,22 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8888/00-Start-project/application-default.yml
+GET http://localhost:8888/001-Configuration-server/application-default.yml
 
 ###
 
-GET http://localhost:8888/00-Start-project/application-default.properties
+GET http://localhost:8888/001-Configuration-server/application-default.properties
 
 ###
 
-GET http://localhost:8888/00-Start-project/application-development.yml
+GET http://localhost:8888/001-Configuration-server/application-development.yml
 
 ###
 
-GET http://localhost:8888/00-Start-project/payments-service-development.yml
+GET http://localhost:8888/001-Configuration-server/payments-service-development.yml
 
 ###
 
-GET http://localhost:8888/application/default/00-Start-project/data.xml
+GET http://localhost:8888/application/default/001-Configuration-server/data.xml
 
 
