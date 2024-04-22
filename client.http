@@ -17,3 +17,33 @@ Content-Type: application/json
 GET http://localhost:10000/payments/started?pageNumer=0
 Accept: application/json
 Content-Type: application/json
+
+###
+
+# /{application}/{profile}[/{label}]
+# /{application}-{profile}.yml
+# /{label}/{application}-{profile}.yml
+# /{application}-{profile}.properties
+# /{label}/{application}-{profile}.properties
+
+###
+
+GET http://localhost:8888/base/application-default.yml
+
+###
+
+GET http://localhost:8888/base/application-default.properties
+
+###
+
+GET http://localhost:8888/base/application-development.yml
+
+###
+
+GET http://localhost:8888/base/shop-service-development.yml
+
+###
+
+GET http://localhost:8888/application/default/base/data.xml
+
+

@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: shop-route
+          predicates:
+            - Path=/api/shop/**
+          uri: lb://PAYMENTS-SERVICE
+          filters:
+            - RewritePath=/api/shop(?<segment>.*), $\{segment}
+            - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
+            - RequestLogger=info
+#spring:
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "http://localhost:4200"
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
