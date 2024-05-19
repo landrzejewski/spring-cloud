@@ -20,7 +20,6 @@
     <modules>
         <module>payments-service</module>
         <module>payments-domain</module>
-        <module>configuration-server</module>
     </modules>
 
 </project>

@@ -8,7 +8,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:10000/payments/0481ebd5-7ecf-4844-926e-9b86910a5dc9
+GET http://localhost:10000/payments/1260044c-3814-4cba-aefc-ccbad56ecd93
 Accept: application/json
 Content-Type: application/json
 
@@ -17,33 +17,3 @@ Content-Type: application/json
 GET http://localhost:10000/payments/started?pageNumer=0
 Accept: application/json
 Content-Type: application/json
-
-###
-
-# /{application}/{profile}[/{label}]
-# /{application}-{profile}.yml
-# /{label}/{application}-{profile}.yml
-# /{application}-{profile}.properties
-# /{label}/{application}-{profile}.properties
-
-###
-
-GET http://localhost:8888/001-Configuration-server/application-default.yml
-
-###
-
-GET http://localhost:8888/001-Configuration-server/application-default.properties
-
-###
-
-GET http://localhost:8888/001-Configuration-server/application-development.yml
-
-###
-
-GET http://localhost:8888/001-Configuration-server/payments-service-development.yml
-
-###
-
-GET http://localhost:8888/application/default/001-Configuration-server/data.xml
-
-

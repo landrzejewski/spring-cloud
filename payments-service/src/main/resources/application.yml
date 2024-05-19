@@ -1,9 +1,13 @@
+server:
+  port: 10000 #${random.int(10000,10010)}
 spring:
-  application:
-    name: payments-service
-  config:
-    import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
-  cloud:
-    config:
-      label: 001-Configuration-server
-      fail-fast: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shop
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    generate-ddl: true
+    open-in-view: false
+  messages:
+    basename: exceptions
