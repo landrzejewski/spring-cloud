@@ -45,3 +45,14 @@ GET http://localhost:8888/01-Configuration-server/payments-service-development.p
 ###
 
 GET http://localhost:8888/application/default/01-Configuration-server/data.xml
+
+###
+
+POST http://localhost:8080/api/shop/payments
+Accept: application/json
+Content-Type: application/json
+
+{
+  "value": "200 PLN"
+}
+
