@@ -11,6 +11,10 @@ import java.util.logging.Logger;
 @Component
 public class RequestLoggerGatewayFilterFactory extends AbstractGatewayFilterFactory<RequestLoggerGatewayFilterFactory.Config> {
 
+    public RequestLoggerGatewayFilterFactory() {
+        super(Config.class);
+    }
+
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
@@ -31,7 +35,7 @@ public class RequestLoggerGatewayFilterFactory extends AbstractGatewayFilterFact
         private String name = RequestLoggerGatewayFilterFactory.class.getName();
 
         public void setLevel(String level) {
-            this.level = Level.parse(level.toLowerCase());
+            this.level = Level.parse(level.toUpperCase());
         }
 
         public void setName(String name) {
