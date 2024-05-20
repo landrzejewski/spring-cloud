@@ -10,7 +10,7 @@ spring:
             - RewritePath=/api/shop(?<segment>.*), $\{segment}
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
             - RequestLogger=info,loggingFilter
-            - RequestTime=8:00,16:00
+            - RequestTime=8:00,17:00
 #spring:
 #  cloud:
 #    gateway:
