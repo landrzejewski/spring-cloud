@@ -9,6 +9,7 @@ spring:
           filters:
             - RewritePath=/api/shop(?<segment>.*), $\{segment}
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
+            - RequestLogger=info,loggingFilter
 #spring:
 #  cloud:
 #    gateway:
