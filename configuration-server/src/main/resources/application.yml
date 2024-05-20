@@ -8,5 +8,7 @@ spring:
           uri: https://github.com/landrzejewski/spring-cloud
           search-paths: configuration-files
           # skip-ssl-validation: true
+        encrypt:
+          enabled: false
 encrypt:
   key: JYMMETRICJEYP

@@ -7,3 +7,5 @@ spring:
     config:
       label: 04-Exercise
       #fail-fast: true
+encrypt:
+  key: JYMMETRICJEYP
