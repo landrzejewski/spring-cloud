@@ -10,20 +10,17 @@ spring:
           uri: https://github.com/landrzejewski/spring-cloud
           search-paths: configuration-files
           # skip-ssl-validation: true
-          order: 0
-        jdbc:
           order: 1
+        jdbc:
+          order: 0
           sql: "SELECT properties.prop_key, properties.prop_value from properties where application=? and profile=? and label=?"
         encrypt:
           enabled: false
   datasource:
-    url: jdbc:h2:file:./data/configuration-development.db
+    url: jdbc:h2:file:./data/configuration-development.db;DB_CLOSE_ON_EXIT=FALSE
     username: admin
     password: admin
     driver-class-name: org.h2.Driver
-  jpa:
-    hibernate:
-      ddl-auto: create
   h2:
     console:
       enabled: true
