@@ -3,3 +3,4 @@ eureka:
     prefer-ip-address: true
   client:
     should-enforce-registration-at-init: false
+    registerWithEureka: false
