@@ -69,3 +69,19 @@ POST http://localhost:8888/decrypt
 Content-Type: text/plain
 
 27cb29c21e63b62cd917cb2ff2bcc9b5d8dda5aa3eabeee4f510c9a53e647a82
+
+###
+
+POST http://localhost:8080/api/shop/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "entries": [
+    {
+      "productId": 1,
+      "quantity": 4,
+      "price": 2000
+    }
+  ]
+}

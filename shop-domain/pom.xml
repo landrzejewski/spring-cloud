@@ -6,10 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.training</groupId>
-    <artifactId>spring-cloud</artifactId>
+    <artifactId>shop-domain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -17,13 +15,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <modules>
-        <module>payments-service</module>
-        <module>payments-domain</module>
-        <module>shop-domain</module>
-        <module>configuration-server</module>
-        <module>discovery-server</module>
-        <module>gateway-server</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
