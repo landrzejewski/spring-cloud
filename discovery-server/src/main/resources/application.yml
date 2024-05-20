@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: discovery-server
+  config:
+    import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
+  cloud:
+    config:
+      label: 02-Discovery-server
+      #fail-fast: true
