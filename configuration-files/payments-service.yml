@@ -9,3 +9,5 @@ spring:
     open-in-view: false
   messages:
     basename: exceptions
+api:
+  time: http://worldtimeapi.org/api/timezone/Europe/Warsaw
