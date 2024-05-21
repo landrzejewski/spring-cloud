@@ -130,7 +130,7 @@
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave-instrumentation-spring-web</artifactId>
-            <version>5.16.0</version>
+            <version>6.0.2</version>
         </dependency>
     </dependencies>
 </project>
