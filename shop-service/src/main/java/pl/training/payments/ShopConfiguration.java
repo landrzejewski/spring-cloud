@@ -42,7 +42,7 @@ public class ShopConfiguration {
 
     @RefreshScope
     @Bean
-    public ConstantDiscountCalculator discountCalculator(@Value("${discount}") int discount) {
+    public ConstantDiscountCalculator discountCalculator(@Value("${discount}") long discount) {
         log.info("DiscountCalculator created...");
         return new ConstantDiscountCalculator(discount);
     }
