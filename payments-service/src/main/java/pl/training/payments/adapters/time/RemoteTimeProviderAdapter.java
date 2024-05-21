@@ -1,14 +1,12 @@
 package pl.training.payments.adapters.time;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import pl.training.payments.ports.TimeProvider;
 
 import java.time.Instant;
 
-@Primary
 @Component
 @RequiredArgsConstructor
 public class RemoteTimeProviderAdapter implements TimeProvider {

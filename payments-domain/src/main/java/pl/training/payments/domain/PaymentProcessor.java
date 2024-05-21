@@ -38,10 +38,10 @@ public class PaymentProcessor implements PaymentService {
         new Thread(() -> {
             fakeDelay();
             var newPayment = payment.withStatus(CONFIRMED);
-            paymentsRepository.save(payment);
+            // paymentsRepository.save(payment);
             var paymentUpdatedEvent = new PaymentUpdatedEvent(payment.getId(), payment.getStatus(), newPayment.getStatus());
             paymentEventEmitter.emit(paymentUpdatedEvent);
-        });
+        }).start();
     }
 
     @SneakyThrows

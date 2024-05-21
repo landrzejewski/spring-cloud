@@ -36,9 +36,9 @@ public class ShopConfiguration {
         return new RestTemplate();
     }
 
-    @Bean
+   /* @Bean
     public Consumer<PaymentEventDto> paymentEventsConsumer() {
         return event -> log.info("Payment status updated (id: %s)".formatted(event.getPaymentId()));
-    }
+    }*/
 
 }
