@@ -14,7 +14,7 @@ public class ShopConfiguration {
         return new OrderProcessor();
     }
 
-    public ShopConfiguration(@Value("${discount}") int discount) {
+    public ShopConfiguration(@Value("${discount}") long discount) {
         log.info("Current discount: " + discount);
     }
 
