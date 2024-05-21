@@ -1,14 +1,18 @@
 package pl.training.payments.domain;
 
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.javamoney.moneta.Money;
 import pl.training.payments.commons.Atomic;
 import pl.training.payments.commons.Page;
 import pl.training.payments.commons.ResultPage;
+import pl.training.payments.ports.PaymentEventEmitter;
 import pl.training.payments.ports.PaymentRepository;
 import pl.training.payments.ports.PaymentService;
 import pl.training.payments.ports.TimeProvider;
+
+import static pl.training.payments.domain.PaymentStatus.CONFIRMED;
 
 @Atomic
 @Log
@@ -19,13 +23,30 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentFeeCalculator paymentFeeCalculator;
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
+    private final PaymentEventEmitter paymentEventEmitter;
 
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var paymentValue = calculatePaymentValue(paymentRequest.getValue());
         var payment = createPayment(paymentValue);
         log.info("Payment created " + payment);
+        process(payment);
         return paymentsRepository.save(payment);
+    }
+
+    private void process(Payment payment) {
+        new Thread(() -> {
+            fakeDelay();
+            var newPayment = payment.withStatus(CONFIRMED);
+            paymentsRepository.save(payment);
+            var paymentUpdatedEvent = new PaymentUpdatedEvent(payment.getId(), payment.getStatus(), newPayment.getStatus());
+            paymentEventEmitter.emit(paymentUpdatedEvent);
+        });
+    }
+
+    @SneakyThrows
+    private void fakeDelay() {
+        Thread.sleep(5_000);
     }
 
     private Payment createPayment(Money paymentValue) {

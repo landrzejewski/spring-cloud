@@ -3,3 +3,28 @@ server:
 discount: "{cipher}27cb29c21e63b62cd917cb2ff2bcc9b5d8dda5aa3eabeee4f510c9a53e647a82"
 api:
   payments: http://PAYMENTS-SERVICE/payments
+spring:
+  cloud:
+    function:
+      definition: paymentEventsConsumer
+    stream:
+      bindings:
+        paymentEventsConsumer-in-0:
+          destination: payment-events
+          group: ${random.uuid} #shop
+#    stream:
+#      bindings:
+#        productsListener-in-0:
+#          destination: products-events
+#          group: shop
+#          binder: kafka1
+#      binders:
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:
+#              cloud:
+#                stream:
+#                  kafka:
+#                    binder:
+#                      brokers: localhost:9092
