@@ -21,3 +21,42 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
+  elastic-server:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.14.1
+    restart: always
+    container_name: elasticsearch
+    environment:
+      discovery.type: "single-node"
+      bootstrap.memory_lock: "true"
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9300:9300"
+      - "9200:9200"
+  logstash-server:
+    image: docker.elastic.co/logstash/logstash:7.14.1
+    restart: always
+    depends_on:
+      - elastic-server
+    container_name: logstash
+    command:
+      logstash -f /etc/logstash/conf.d/logstash.conf
+    volumes:
+      - ./configuration-files/logstash.conf:/etc/logstash/conf.d/logstash.conf
+    ports:
+      - "5000:5000"
+  kibana-server:
+    image: docker.elastic.co/kibana/kibana:7.14.1
+    restart: always
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://elastic-server:9300
+    ports:
+      - "5601:5601"
+  zipkin-server:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"

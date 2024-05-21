@@ -1,7 +1,12 @@
 package pl.training.payments;
 
+import brave.Tracing;
+import brave.http.HttpTracing;
+import brave.spring.web.TracingClientHttpRequestInterceptor;
 import lombok.extern.java.Log;
+import org.apache.http.client.methods.HttpTrace;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -29,10 +34,19 @@ public class ShopConfiguration {
         log.info("Payments instance: " + serviceResolver.get("PAYMENTS-SERVICE"));
     }
 
+    @Bean
+    public HttpTracing create(Tracing tracing) {
+        return HttpTracing.newBuilder(tracing)
+                .build();
+    }
+
     @LoadBalanced
     @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+    public RestTemplate restTemplate(HttpTracing httpTracing, RestTemplateBuilder restTemplateBuilder) {
+        return new RestTemplateBuilder()
+                .additionalInterceptors(TracingClientHttpRequestInterceptor.create(httpTracing))
+                .build();
+       // return restTemplateBuilder.build();
     }
 
    /* @Bean
