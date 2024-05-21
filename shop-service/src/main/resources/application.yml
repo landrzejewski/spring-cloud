@@ -6,3 +6,5 @@ spring:
   cloud:
     config:
       label: 04-Exercise
+encrypt:
+  key: JYMMETRICJEYP

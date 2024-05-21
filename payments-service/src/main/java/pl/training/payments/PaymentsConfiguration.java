@@ -1,7 +1,6 @@
 package pl.training.payments;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import pl.training.payments.adapters.time.SystemTimeProvider;
@@ -33,10 +32,6 @@ public class PaymentsConfiguration {
     @Bean
     public TimeProvider systemTimeProvider() {
         return new SystemTimeProvider();
-    }
-
-    public PaymentsConfiguration(@Value("${discount}") int discount) {
-        log.info("Current discount: " + discount);
     }
 
 }
