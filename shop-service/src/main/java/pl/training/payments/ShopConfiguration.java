@@ -22,7 +22,7 @@ public class ShopConfiguration {
         return new OrderProcessor(paymentService);
     }
 
-    public ShopConfiguration(@Value("${discount}") int discount, ServiceResolver serviceResolver) {
+    public ShopConfiguration(@Value("${discount}") long discount, ServiceResolver serviceResolver) {
         log.info("Current discount: " + discount);
         log.info("Payments instance: " + serviceResolver.get("PAYMENTS-SERVICE"));
     }
