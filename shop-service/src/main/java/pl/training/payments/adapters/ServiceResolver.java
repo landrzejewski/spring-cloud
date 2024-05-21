@@ -18,6 +18,9 @@ public class ServiceResolver {
 
     public Optional<URI> get(String serviceId) {
         var instances = discoveryClient.getInstances(serviceId);
+        if (instances.isEmpty()) {
+            return Optional.empty();
+        }
         var instanceIndex = random.nextInt(instances.size());
         return Optional.ofNullable(instances.get(instanceIndex))
                 .map(ServiceInstance::getUri);
