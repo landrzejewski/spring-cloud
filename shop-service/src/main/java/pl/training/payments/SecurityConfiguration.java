@@ -9,7 +9,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
+
+import javax.sql.DataSource;
 
 // @EnableWebSecurity(debug = true)
 @Configuration
@@ -62,10 +65,13 @@ public class SecurityConfiguration {
     }*/
 
     @Bean
-    public UserDetailsManager userDetailsManager() {
+    public UserDetailsManager userDetailsManager(DataSource dataSource) {
         //return new InMemoryUserDetailsManager(defaultUser());
 
-
+        var manager = new JdbcUserDetailsManager(dataSource);
+        manager.setUsersByUsernameQuery("select username, password, enabled from app_users where username = ?");
+        manager.setAuthoritiesByUsernameQuery("select username, authority from app_users_authorities where username = ?");
+        return manager;
     }
 
 }
