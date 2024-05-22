@@ -8,6 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.training.payments.adapters.ServiceResolver;
 import pl.training.payments.domain.ConstantDiscountCalculator;
 import pl.training.payments.domain.OrderProcessor;
@@ -17,7 +19,7 @@ import pl.training.payments.ports.ShopService;
 @EnableFeignClients
 @Configuration
 @Log
-public class ShopConfiguration {
+public class ShopConfiguration implements WebMvcConfigurer {
 
     @Bean
     public ShopService shopService(PaymentService paymentService, ConstantDiscountCalculator discountCalculator) {
@@ -45,6 +47,11 @@ public class ShopConfiguration {
     public ConstantDiscountCalculator discountCalculator(@Value("${discount}") long discount) {
         log.info("DiscountCalculator created...");
         return new ConstantDiscountCalculator(discount);
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+       registry.addViewController("login.html").setViewName("login-form");
     }
 
 }

@@ -15,8 +15,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import pl.training.payments.security.jwt.JwtAuthenticationFilter;
 
 import javax.sql.DataSource;
+
+import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -81,14 +87,46 @@ public class SecurityConfiguration {
     }*/
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public CorsConfiguration corsConfiguration() {
+        var corsConfig = new CorsConfiguration();
+        corsConfig.setAllowedOrigins(List.of("http://localhost:4800"));
+        corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        corsConfig.setAllowedHeaders(List.of("*"));
+        corsConfig.setAllowCredentials(true);
+        return corsConfig;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
         return httpSecurity
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+
+                .cors(config -> config.configurationSource(request -> corsConfiguration()))
+
                 .csrf(AbstractHttpConfigurer::disable)
+
                 .httpBasic(withDefaults())
+
+                .formLogin(config -> config
+                        .loginPage("/login.html")
+                        .defaultSuccessUrl("/index.html")
+                        //.usernameParameter("username")
+                        //.passwordParameter("password")
+                )
+
+                .logout(config -> config
+                        //.logoutRequestMatcher(new AntPathRequestMatcher("/logout.html"))
+                        .logoutUrl("/logout.html")
+                        .logoutSuccessUrl("/login.html")
+                        .invalidateHttpSession(true)
+                )
+
                 .authorizeHttpRequests(config -> config
+                        .requestMatchers("/login.html").permitAll()
                         .requestMatchers("/orders").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
+
                 .build();
     }
 
