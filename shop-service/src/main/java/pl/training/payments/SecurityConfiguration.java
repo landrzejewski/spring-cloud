@@ -1,6 +1,15 @@
 package pl.training.payments;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 
 // @EnableWebSecurity(debug = true)
 @Configuration
@@ -28,5 +37,35 @@ public class SecurityConfiguration {
 
     AuthorizationManager authorizationManager; // Interfejs/kontrakt dla procesu autoryzacji
         AuthoritiesAuthorizationManager authoritiesAuthorizationManager; // Jedna z implementacji AuthorizationManager (role)*/
+
+    public UserDetails defaultUser() {
+        return User.withUsername("jan")
+                .password(passwordEncoder().encode("123"))
+                .roles("ADMIN")
+                .authorities("write, read")
+                .build();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+   /* @Bean
+    public UserDetailsService userDetailsService() {
+        return username -> {
+            if (!username.equals("jan")) {
+                throw new UsernameNotFoundException(username);
+            }
+            return defaultUser();
+        };
+    }*/
+
+    @Bean
+    public UserDetailsManager userDetailsManager() {
+        //return new InMemoryUserDetailsManager(defaultUser());
+
+
+    }
 
 }

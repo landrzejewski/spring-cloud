@@ -9,3 +9,6 @@ spring:
         config:
           PAYMENTS-SERVICE: #default:
             logger-level: basic
+  jpa:
+    hibernate:
+      ddl-auto: create

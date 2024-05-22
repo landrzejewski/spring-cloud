@@ -98,7 +98,6 @@ path=shop-service
 POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
-Authorization: Basic dXNlcjpmOGFjNDU5Ni0wYWY5LTRmODItYjZmNi03ZTU1YTdhZWVhMjE=
 
 {
   "entries": [
@@ -115,4 +114,4 @@ Authorization: Basic dXNlcjpmOGFjNDU5Ni0wYWY5LTRmODItYjZmNi03ZTU1YTdhZWVhMjE=
 GET http://localhost:20000/actuator
 Accept: application/json
 Content-Type: application/json
-Authorization: Basic dXNlcjpjYzRkY2IyNi0xZmJkLTQ5MmItODc4My00MjA4NTBiNzYwMzU=
+Authorization: Basic amFuOjEyMw==
