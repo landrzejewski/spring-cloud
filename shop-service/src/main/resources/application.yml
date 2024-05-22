@@ -5,6 +5,6 @@ spring:
     import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
   cloud:
     config:
-      label: 08-Security
+      label: 09-Keycloak
 encrypt:
   key: JYMMETRICJEYP
