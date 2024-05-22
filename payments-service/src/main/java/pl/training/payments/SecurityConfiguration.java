@@ -30,19 +30,11 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-
                 .cors(config -> config.configurationSource(request -> corsConfiguration()))
 
                 .csrf(AbstractHttpConfigurer::disable)
 
                 .oauth2ResourceServer(config -> config.jwt(this::jwtConfig))
-
-                .logout(config -> config
-                        .logoutUrl("/logout.html")
-                        .logoutSuccessUrl("/index.html")
-                        .invalidateHttpSession(true)
-                        .addLogoutHandler(new KeycloakLogoutHandler(new RestTemplate()))
-                )
 
                 .authorizeHttpRequests(config -> config
                         //.requestMatchers("/orders").hasRole("ADMIN")

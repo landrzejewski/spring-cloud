@@ -32,7 +32,6 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-
                 .cors(config -> config.configurationSource(request -> corsConfiguration()))
 
                 .csrf(AbstractHttpConfigurer::disable)
