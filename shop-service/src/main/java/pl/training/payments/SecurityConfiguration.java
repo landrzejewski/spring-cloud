@@ -44,13 +44,13 @@ public class SecurityConfiguration {
     AuthorizationManager authorizationManager; // Interfejs/kontrakt dla procesu autoryzacji
         AuthoritiesAuthorizationManager authoritiesAuthorizationManager; // Jedna z implementacji AuthorizationManager (role)*/
 
-    public UserDetails defaultUser() {
+    /*public UserDetails defaultUser() {
         return User.withUsername("jan")
                 .password(passwordEncoder().encode("123"))
                 .roles("ADMIN")
                 .authorities("write, read")
                 .build();
-    }
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {
