@@ -122,6 +122,7 @@ public class SecurityConfiguration {
                 )
 
                 .authorizeHttpRequests(config -> config
+                        .requestMatchers("/tokens").permitAll()
                         .requestMatchers("/login.html").permitAll()
                         .requestMatchers("/orders").hasRole("ADMIN")
                         .anyRequest().authenticated()

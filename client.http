@@ -98,7 +98,8 @@ path=shop-service
 POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
-Authorization: Basic amFuOjEyMw==
+#Authorization: Basic amFuOjEyMw==
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDoyMDAwMCIsInVzZXIiOiJqYW4iLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImV4cCI6MTcxNjM3NzE3M30.FfZKWueK3phlXaHMPeWH5XSKQOVnCKfMrK56VF7GaMs
 
 {
   "entries": [
@@ -123,3 +124,14 @@ GET http://localhost:20000/users/me
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic amFuOjEyMw==
+
+###
+
+POST http://localhost:20000/tokens
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "jan",
+  "password": "123"
+}
