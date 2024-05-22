@@ -20,6 +20,7 @@ import pl.training.payments.domain.ConstantDiscountCalculator;
 import pl.training.payments.domain.OrderProcessor;
 import pl.training.payments.ports.PaymentService;
 import pl.training.payments.ports.ShopService;
+import pl.training.payments.security.apikey.ApiKeyAuthenticationProvider;
 import pl.training.payments.security.jwt.JwtAuthenticationProvider;
 import pl.training.payments.security.jwt.JwtService;
 
@@ -70,6 +71,8 @@ public class ShopConfiguration implements WebMvcConfigurer {
         doaAuthenticationProvider.setUserDetailsService(userDetailsService);
         doaAuthenticationProvider.setPasswordEncoder(passwordEncoder);
         authenticationManagerBuilder.authenticationProvider(doaAuthenticationProvider);
+
+        authenticationManagerBuilder.authenticationProvider(new ApiKeyAuthenticationProvider());
     }
 
 }

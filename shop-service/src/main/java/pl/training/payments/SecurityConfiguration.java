@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import pl.training.payments.security.RequestUrlAuthorizationManager;
+import pl.training.payments.security.apikey.ApiKeyAuthenticationFilter;
 import pl.training.payments.security.jwt.JwtAuthenticationFilter;
 
 import javax.sql.DataSource;
@@ -98,9 +99,11 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, JwtAuthenticationFilter jwtAuthenticationFilter,
+                                                   ApiKeyAuthenticationFilter apiKeyAuthenticationFilter) throws Exception {
         return httpSecurity
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(apiKeyAuthenticationFilter, ApiKeyAuthenticationFilter.class)
 
                 .cors(config -> config.configurationSource(request -> corsConfiguration()))
 

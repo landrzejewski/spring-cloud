@@ -100,7 +100,7 @@ Accept: application/json
 Content-Type: application/json
 #Authorization: Basic amFuOjEyMw==
 #Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDoyMDAwMCIsInVzZXIiOiJqYW4iLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImV4cCI6MTcxNjM3NzE3M30.FfZKWueK3phlXaHMPeWH5XSKQOVnCKfMrK56VF7GaMs
-Authorization: API_KEY csdnf878r32485y342785230
+Authorization: API_KEY 1234567890
 
 {
   "entries": [
