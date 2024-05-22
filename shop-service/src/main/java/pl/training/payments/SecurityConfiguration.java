@@ -18,6 +18,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
+import pl.training.payments.security.RequestUrlAuthorizationManager;
 import pl.training.payments.security.jwt.JwtAuthenticationFilter;
 
 import javax.sql.DataSource;
@@ -125,6 +126,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/tokens").permitAll()
                         .requestMatchers("/login.html").permitAll()
                         .requestMatchers("/orders").hasRole("ADMIN")
+                        //.anyRequest().access(new RequestUrlAuthorizationManager())
                         .anyRequest().authenticated()
                 )
 
