@@ -2,6 +2,8 @@ package pl.training.payments;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
@@ -64,7 +67,7 @@ public class SecurityConfiguration {
         };
     }*/
 
-    @Bean
+    /*@Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         //return new InMemoryUserDetailsManager(defaultUser());
 
@@ -72,6 +75,6 @@ public class SecurityConfiguration {
         manager.setUsersByUsernameQuery("select username, password, enabled from app_users where username = ?");
         manager.setAuthoritiesByUsernameQuery("select username, authority from app_users_authorities where username = ?");
         return manager;
-    }
+    }*/
 
 }
