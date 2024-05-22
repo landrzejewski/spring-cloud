@@ -66,5 +66,9 @@ public class SecurityConfiguration {
         userInfoEndpointConfig.userAuthoritiesMapper(new KeycloakGrantedAuthoritiesMapper());
     }
 
-
+  /*
+    Definiowanie First login flow dla logowania przez GitHub
+    Authentication -> Create flow (detect existing user flow, Basic flow) -> Add step (Detect existing broker user, Automatically set existing user)
+    Identity providers -> github -> First login flow -> detect existing user flow
+  */
 }

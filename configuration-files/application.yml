@@ -18,6 +18,10 @@ spring:
             client-id: training-client
             scope:
               - openid
+#          github:
+#            client-id: ***
+#            secret: ***
         provider:
           keycloak:
             issuer-uri: http://localhost:8100/realms/training
+
