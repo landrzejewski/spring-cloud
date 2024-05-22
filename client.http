@@ -98,6 +98,7 @@ path=shop-service
 POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
+Authorization: Basic amFuOjEyMw==
 
 {
   "entries": [
@@ -112,6 +113,13 @@ Content-Type: application/json
 ###
 
 GET http://localhost:20000/actuator
+Accept: application/json
+Content-Type: application/json
+Authorization: Basic amFuOjEyMw==
+
+###
+
+GET http://localhost:20000/users/me
 Accept: application/json
 Content-Type: application/json
 Authorization: Basic amFuOjEyMw==
