@@ -1,17 +1,12 @@
 package pl.training.payments;
 
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,8 +15,6 @@ import pl.training.payments.domain.ConstantDiscountCalculator;
 import pl.training.payments.domain.OrderProcessor;
 import pl.training.payments.ports.PaymentService;
 import pl.training.payments.ports.ShopService;
-import pl.training.payments.security.jwt.JwtAuthenticationProvider;
-import pl.training.payments.security.jwt.JwtService;
 
 @EnableFeignClients
 @Configuration
@@ -59,17 +52,6 @@ public class ShopConfiguration implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
        registry.addViewController("login.html").setViewName("login-form");
-    }
-
-    @Autowired
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder, JwtService jwtService,
-                          UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
-        authenticationManagerBuilder.authenticationProvider(new JwtAuthenticationProvider(jwtService));
-
-        var doaAuthenticationProvider = new DaoAuthenticationProvider();
-        doaAuthenticationProvider.setUserDetailsService(userDetailsService);
-        doaAuthenticationProvider.setPasswordEncoder(passwordEncoder);
-        authenticationManagerBuilder.authenticationProvider(doaAuthenticationProvider);
     }
 
 }

@@ -99,7 +99,8 @@ POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
 #Authorization: Basic amFuOjEyMw==
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDoyMDAwMCIsInVzZXIiOiJqYW4iLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImV4cCI6MTcxNjM3NzE3M30.FfZKWueK3phlXaHMPeWH5XSKQOVnCKfMrK56VF7GaMs
+#Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2xvY2FsaG9zdDoyMDAwMCIsInVzZXIiOiJqYW4iLCJyb2xlcyI6WyJST0xFX0FETUlOIl0sImV4cCI6MTcxNjM3NzE3M30.FfZKWueK3phlXaHMPeWH5XSKQOVnCKfMrK56VF7GaMs
+Authorization: bearer {{token}}
 
 {
   "entries": [
@@ -135,3 +136,31 @@ Content-Type: application/json
   "username": "jan",
   "password": "123"
 }
+
+###
+
+//@no-redirect
+//@no-cookie-jar
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=training-client&grant_type=password&username=jan@training.pl&password=123
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
+
+###
+
+//@no-redirect
+//@no-cookie-jar
+POST http://localhost:8100/realms/training/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=training-client&grant_type=refresh_token&refresh_token={{ refreshToken }}
+
+> {%
+    client.global.set('token', response.body.access_token);
+    client.global.set('refreshToken', response.body.refresh_token);
+%}
