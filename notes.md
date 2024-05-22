@@ -7,3 +7,5 @@
 
 - dodaj nową implementację adaptera usługi TimeProvider, tak aby czas/znacznik czasowy był pobierany z
   zewnętrznego api http://worldtimeapi.org/api/timezone/Europe/Warsaw
+
+https://drive.google.com/drive/folders/1l81mOU3cW7IMR3uvnSr4srxJr3mC_Ert?usp=drive_link
