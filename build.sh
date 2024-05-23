@@ -1,2 +1,2 @@
 ./mvnw clean package -DskipTest
-docker build -t configuartion-server ./configuration-server
+docker build -t configuration-server ./configuration-server

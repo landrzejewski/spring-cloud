@@ -7,7 +7,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/landrzejewski/spring-cloud
           search-paths: configuration-files
           order: 1
         jdbc:

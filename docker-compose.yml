@@ -1,27 +1,34 @@
-version: '3'
 services:
-  postgres-server:
-    image: postgres:16-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=training
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
   zookeeper-server:
     image: wurstmeister/zookeeper
-    ports:
-      - "2181:2181"
+    restart: on-failure
   kafka-server:
     image: wurstmeister/kafka
-    ports:
-      - "9092:9092"
+    restart: on-failure
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_HOST_NAME: kafka-server
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
+  configuration-server-one:
+    image: configuration-server
+    restart: on-failure
+    ports:
+      - "8888:8888"
+    environment:
+      GIT_URI: https://github.com/landrzejewski/spring-cloud
+      SEARCH_PATHS: configuration-files
+      KAFKA_BROKERS: kafka-server:9092
+      ENCRYPT_KEY: JYMMETRICJEYP
+    volumes:
+      - ./volumes/configuration-server-one:/data
 
 
-encrypt:
-  key: JYMMETRICJEYP
+#  postgres-server:
+#    image: postgres:16-alpine
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      - POSTGRES_USER=admin
+#      - POSTGRES_PASSWORD=admin
+#      - POSTGRES_DB=training
+#    volumes:
+#      - ./data/postgres:/var/lib/postgresql/data
