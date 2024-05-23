@@ -33,8 +33,13 @@ services:
     restart: on-failure
     ports:
       - "8761:8761"
-
-
+#    deploy:
+#      replicas: 2
+  gateway-server:
+    image: gateway-server
+    restart: on-failure
+    ports:
+      - "8080:8080"
 
 
 
