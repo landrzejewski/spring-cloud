@@ -9,7 +9,6 @@ spring:
         git:
           uri: https://github.com/landrzejewski/spring-cloud
           search-paths: configuration-files
-          # skip-ssl-validation: true
           order: 1
         jdbc:
           order: 0
@@ -17,13 +16,7 @@ spring:
         encrypt:
           enabled: false
   datasource:
-    url: jdbc:h2:file:./data/configuration-development.db;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:file:./data/configuration.db;DB_CLOSE_ON_EXIT=FALSE
     username: admin
     password: admin
     driver-class-name: org.h2.Driver
-  h2:
-    console:
-      enabled: true
-      path: /h2
-encrypt:
-  key: JYMMETRICJEYP
