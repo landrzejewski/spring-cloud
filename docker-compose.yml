@@ -28,11 +28,11 @@ services:
       ENCRYPT_KEY: JYMMETRICJEYP
     volumes:
       - ./volumes/configuration-server-two:/data
-  discovery-server:
-    image: discovery-server
-    restart: on-failure
-    ports:
-      - "8761:8761"
+#  discovery-server:
+#    image: discovery-server
+#    restart: on-failure
+#    ports:
+#      - "8761:8761"
 #    deploy:
 #      replicas: 2
   gateway-server:

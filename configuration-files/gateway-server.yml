@@ -5,7 +5,8 @@ spring:
         - id: shop-route
           predicates:
             - Path=/api/shop/**
-          uri: lb://SHOP-SERVICE
+          #uri: lb://SHOP-SERVICE
+          uri: http://shop-service:8080
           filters:
             - RewritePath=/api/shop(?<segment>.*), $\{segment}
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
