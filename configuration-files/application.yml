@@ -5,4 +5,4 @@ eureka:
   client:
     should-enforce-registration-at-init: true
     serviceUrl:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://discovery-server:8761/eureka/
