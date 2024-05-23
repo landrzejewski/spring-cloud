@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: training
+  name: main-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: "nginx"
+  rules:
+    - http:
+        paths:
+#          - pathType: Prefix
+#            path:
+#              /echo
+          - path: /api/echo(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: echo-server-service
+                port:
+                  number: 80
