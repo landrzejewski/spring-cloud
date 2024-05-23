@@ -54,3 +54,8 @@ services:
     restart: on-failure
     deploy:
       replicas: 2
+  shop-service:
+    image: shop-service
+    restart: on-failure
+    deploy:
+      replicas: 2

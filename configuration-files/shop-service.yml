@@ -6,6 +6,9 @@ spring:
     function:
       definition: paymentEventsConsumer
     stream:
+      kafka:
+        binder:
+          brokers: kafka-server:9092
       bindings:
         paymentEventsConsumer-in-0:
           destination: payment-events
