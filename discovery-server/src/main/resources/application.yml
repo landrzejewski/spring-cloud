@@ -6,4 +6,4 @@ spring:
   cloud:
     config:
       label: 10-k8s
-      #fail-fast: true
+      fail-fast: true
