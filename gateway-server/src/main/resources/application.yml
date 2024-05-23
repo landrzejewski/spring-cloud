@@ -2,8 +2,9 @@ spring:
   application:
     name: gateway-server
   config:
-    import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
+    import: optional:configserver:http://configuration-server-one:8888,optional:configserver:http://configuration-server-two:8888
   cloud:
     config:
       label: 10-k8s
-      #fail-fast: true
+      fail-fast: true
+

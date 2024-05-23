@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/shop
+    url: jdbc:postgresql://postgres-server:5432/training
     username: admin
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -11,9 +11,9 @@ spring:
     basename: exceptions
   cloud:
     stream:
-#      kafka:
-#        binder:
-#          brokers: localhost:9092
+      kafka:
+        binder:
+          brokers: kafka-server:9092
       bindings:
         payments-out-0:
           destination: payment-events
