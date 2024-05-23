@@ -1,6 +1,6 @@
 discount: 10
 api:
-  payments: http://PAYMENTS-SERVICE/payments
+  payments: http://payments-service:8080/payments
 spring:
   cloud:
     function:
