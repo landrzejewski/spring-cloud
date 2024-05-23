@@ -11,8 +11,6 @@ services:
   configuration-server-one:
     image: configuration-server
     restart: on-failure
-    ports:
-      - "8888:8888"
     environment:
       GIT_URI: https://github.com/landrzejewski/spring-cloud
       SEARCH_PATHS: configuration-files
@@ -20,6 +18,25 @@ services:
       ENCRYPT_KEY: JYMMETRICJEYP
     volumes:
       - ./volumes/configuration-server-one:/data
+  configuration-server-two:
+    image: configuration-server
+    restart: on-failure
+    environment:
+      GIT_URI: https://github.com/landrzejewski/spring-cloud
+      SEARCH_PATHS: configuration-files
+      KAFKA_BROKERS: kafka-server:9092
+      ENCRYPT_KEY: JYMMETRICJEYP
+    volumes:
+      - ./volumes/configuration-server-two:/data
+  discovery-server:
+    image: discovery-server
+    restart: on-failure
+    ports:
+      - "8761:8761"
+
+
+
+
 
 
 #  postgres-server:
