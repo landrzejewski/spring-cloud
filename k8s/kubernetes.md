@@ -145,9 +145,12 @@ kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx --watc
 ```
 Instalacja UI  [https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard)
 ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
+helm upgrade --install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard --create-namespace --namespace kubernetes-dashboard
+
 kubectl apply -f admin-user.yml
 kubectl apply -f admin-roles.yml
+
 kubectl -n kubernetes-dashboard create token admin-user
 kubectl proxy --address=0.0.0.0
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
