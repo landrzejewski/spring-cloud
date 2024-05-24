@@ -5,7 +5,7 @@ metadata:
   namespace: training
 spec:
   hostPath:
-    path: /tmp/postgres
+    path: /tmp/postgres-volume
   capacity:
     storage: 10G
   accessModes:
