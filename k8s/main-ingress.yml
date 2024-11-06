@@ -11,13 +11,18 @@ spec:
   rules:
     - http:
         paths:
-#          - pathType: Prefix
-#            path:
-#              /echo
-          - path: /api/echo(/|$)(.*)
+          #            - pathType: Prefix
+          #              path: /payments
+          #              backend:
+          #                service:
+          #                  name: payments-service
+          #                  port:
+          #                    number: 8080
+
+          - path: /api/shop(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: echo-server-service
+                name: payments-service
                 port:
-                  number: 80
+                  number: 8080
