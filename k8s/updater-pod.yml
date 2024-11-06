@@ -18,9 +18,11 @@ spec:
       #           configMapKeyRef:
       #             key: INTERVAL
       #             name: updater-config-map
+
       envFrom:
         - configMapRef:
             name: updater-config-map
+
       volumeMounts:
         - mountPath: /config
           name: config

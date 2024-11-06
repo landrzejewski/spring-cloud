@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: training
+  name: payments-deployment
+  annotations:
+    kubernetes.io/change-cause: "Initial release"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: payments-server
+  template:
+    metadata:
+      labels:
+        app-name: payments-server
+    spec:
+      containers:
+        - name: payments-server
+          image: landrzejewski/payments-service
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: payments-config-map

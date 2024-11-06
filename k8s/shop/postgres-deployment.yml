@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  namespace: training
+  annotations:
+    kubernetes.io/change-cause: "Initial release"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: postgres
+  template:
+    metadata:
+      labels:
+        app-name: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          ports:
+            - containerPort: 5432
+              name: postgres
+          envFrom:
+            - configMapRef:
+                name: postgres-config-map
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: storage
+          resources:
+            requests:
+              memory: 512M
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: postgres-volume-claim

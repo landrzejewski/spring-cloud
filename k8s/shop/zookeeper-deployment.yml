@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: training
+  name: zookeeper-deployment
+  annotations:
+    kubernetes.io/change-cause: "Initial release"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app-name: zookeeper-server
+  template:
+    metadata:
+      labels:
+        app-name: zookeeper-server
+    spec:
+      containers:
+        - name: zookeeper-server
+          image: wurstmeister/zookeeper
+          ports:
+            - containerPort: 2181
