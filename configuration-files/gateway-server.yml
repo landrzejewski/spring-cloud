@@ -10,6 +10,7 @@ spring:
             - RewritePath=/api/shop(?<segment>.*),$\{segment}
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
             - RequestLogger=info,loggerFilter
+            - RequestTime=8:00,14:00
       #discovery:
       #  locator:
       #     enabled: true
