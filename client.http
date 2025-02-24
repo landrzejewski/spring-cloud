@@ -36,13 +36,18 @@ GET http://localhost:8888/01-Configuration-server/application-development.json
 
 ###
 
-GET http://localhost:8888/01-Configuration-server/payments-service.properties
+GET http://localhost:8888/04-Exercise/payments-service-development.properties
+
+###
+
+GET http://localhost:8888/04-Exercise/shop-service-default.yml
 
 ###
 
 GET http://localhost:8888/application/default/01-Configuration-server/data.xml
 
 ###
+
 
 POST http://localhost:8080/api/shop/payments
 Accept: application/json
