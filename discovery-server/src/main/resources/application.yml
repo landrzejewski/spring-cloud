@@ -5,5 +5,5 @@ spring:
     import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
   cloud:
     config:
-      label: 04-Exercise
+      label: 05-Http-communication
       # fail-fast: true

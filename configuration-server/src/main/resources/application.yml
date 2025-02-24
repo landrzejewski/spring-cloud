@@ -1,8 +1,8 @@
 server:
   port: 8888
 spring:
-  profiles:
-    active: git, jdbc
+#  profiles:
+#    active: git, jdbc
   application:
     name: configuration-server
   cloud:
@@ -13,19 +13,19 @@ spring:
           search-paths: configuration-files
           # skip-ssl-validation: true
           order: 1
-        jdbc:
-          sql: "SELECT prop_key, prop_value from properties where application=? and profile=? and label=?"
-          order: 0
+#        jdbc:
+#          sql: "SELECT prop_key, prop_value from properties where application=? and profile=? and label=?"
+#          order: 0
         encrypt:
           enabled: false
-  datasource:
-    url: jdbc:h2:file:./data/configuration-development.db;DB_CLOSE_ON_EXIT=FALSE
-    username: admin
-    password: admin
-    driver-class-name: org.h2.Driver
-  h2:
-    console:
-      path: /h2
-      enabled: true
+#  datasource:
+#    url: jdbc:h2:file:./data/configuration-development.db;DB_CLOSE_ON_EXIT=FALSE
+#    username: admin
+#    password: admin
+#    driver-class-name: org.h2.Driver
+#  h2:
+#    console:
+#      path: /h2
+#      enabled: true
 encrypt:
   key: JYMMETRICJEYP
