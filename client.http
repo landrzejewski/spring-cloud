@@ -53,3 +53,15 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:8888/encrypt
+Content-Type: text/plain
+
+20
+
+###
+
+POST http://localhost:8888/decrypt
+Content-Type: text/plain
+
+2224efa1bb1cafb2831c8e1429d46f9577820b85141fd1452dc177692aea14bb
