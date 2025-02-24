@@ -1,3 +1,5 @@
 server:
   port: 20000
 discount: "{cipher}2224efa1bb1cafb2831c8e1429d46f9577820b85141fd1452dc177692aea14bb"
+api:
+  payments: http://PAYMENTS-SERVICE/payments

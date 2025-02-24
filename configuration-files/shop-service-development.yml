@@ -1,0 +1,11 @@
+logging:
+  level:
+    org.springframework.web.client.RestTemplate: DEBUG
+    pl.training: DEBUG
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          PAYMENTS-SERVICE: #default:
+            logger-level: basic
