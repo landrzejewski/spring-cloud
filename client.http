@@ -65,6 +65,7 @@ Content-Type: text/plain
 POST http://localhost:8080/api/shop/orders
 Accept: application/json
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "entries": [

@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .oauth2ResourceServer(config -> config.jwt(jwtConfigurer -> {}))
                 .authorizeHttpRequests(config ->
-                        config.anyRequest().authenticated()
+                        config.anyRequest().hasRole("ADMIN")
                 )
                 .build();
     }
