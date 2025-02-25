@@ -35,4 +35,25 @@ public class ShopConfiguration {
         return new RestTemplate();
     }
 
+
+    /*@Bean
+    public HttpTracing create(Tracing tracing) {
+        return HttpTracing.newBuilder(tracing)
+                .build();
+    }*/
+
+    /*@LoadBalanced
+    @Bean
+    public RestTemplate restTemplate(*//*HttpTracing httpTracing,*//*RestTemplateBuilder restTemplateBuilder) {
+     *//*return new RestTemplateBuilder()
+                .additionalInterceptors(TracingClientHttpRequestInterceptor.create(httpTracing))
+                .build();*//*
+        return restTemplateBuilder.build();
+    }*/
+
+   /* @Bean
+    public Consumer<PaymentEventDto> paymentEventsConsumer() {
+        return event -> log.info("Payment status updated (id: %s)".formatted(event.getPaymentId()));
+    }*/
+
 }
