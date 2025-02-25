@@ -8,3 +8,8 @@ spring:
       label: 06-Async-communication
 encrypt:
   key: JYMMETRICJEYP
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,refresh
