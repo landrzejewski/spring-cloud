@@ -8,7 +8,6 @@ import pl.training.payments.ports.TimeProvider;
 
 import java.time.Instant;
 
-@Primary
 @Component
 @RequiredArgsConstructor
 public class RemoteTimeProviderAdapter implements TimeProvider {
