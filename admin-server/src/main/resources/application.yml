@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: admin-server
+  config:
+    import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
+  cloud:
+    config:
+      label: 07-Tracing-and-monitoring
+      # fail-fast: true
