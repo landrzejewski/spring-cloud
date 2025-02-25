@@ -30,7 +30,7 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       DB_VENDOR: "POSTGRES"
-      DB_ADDR: "postgres"
+      DB_ADDR: "postgres-server"
       DB_USER: "admin"
       DB_PASSWORD: "admin"
       DB_DATABASE: "training"
