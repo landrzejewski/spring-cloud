@@ -1,6 +1,6 @@
 services:
   postgres-server:
-    image: postgres:16-alpine
+    image: postgres:17-alpine
     ports:
       - "5432:5432"
     environment:
@@ -20,3 +20,17 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-server:2181
+  keycloak:
+    image: quay.io/keycloak/keycloak
+    command:
+      - start-dev
+    ports:
+      - "8100:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      DB_VENDOR: "POSTGRES"
+      DB_ADDR: "postgres"
+      DB_USER: "admin"
+      DB_PASSWORD: "admin"
+      DB_DATABASE: "training"
