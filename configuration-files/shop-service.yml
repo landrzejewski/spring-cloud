@@ -1,5 +1,33 @@
 server:
   port: 20000
-discount: "{cipher}2224efa1bb1cafb2831c8e1429d46f9577820b85141fd1452dc177692aea14bb"
+#discount: "{cipher}b810677fff21240c84ed9d3e71904306ed00ea6ddc6467785b165c513663148c"
+discount: 30
 api:
   payments: http://PAYMENTS-SERVICE/payments
+spring:
+  cloud:
+    function:
+      definition: paymentEventsConsumer
+    stream:
+      bindings:
+        paymentEventsConsumer-in-0:
+          destination: payment-events
+          group: ${random.uuid} #shop
+          properties:
+            spring.json.trusted.packages: pl.training.payments.adapters.events
+#    stream:
+#      bindings:
+#        productsListener-in-0:
+#          destination: products-events
+#          group: shop
+#          binder: kafka1
+#      binders:
+#        kafka1:
+#          type: kafka
+#          environment:
+#            spring:
+#              cloud:
+#                stream:
+#                  kafka:
+#                    binder:
+#                      brokers: localhost:9092
