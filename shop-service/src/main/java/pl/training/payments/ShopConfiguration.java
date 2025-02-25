@@ -18,10 +18,6 @@ import pl.training.payments.ports.ShopService;
 @Configuration
 public class ShopConfiguration {
 
-    public ShopConfiguration(@Value("${discount}") long discount) {
-        log.info("Current discount: " + discount);
-    }
-
     @Bean
     public ShopService shopService(PaymentService paymentService, ConstantDiscountCalculator discountCalculator) {
         return new OrderProcessor(paymentService, discountCalculator);
