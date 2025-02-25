@@ -5,5 +5,5 @@ spring:
     import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
   cloud:
     config:
-      label: 06-Async-communication
+      label: 07-Tracing-and-monitoring
       # fail-fast: true

@@ -10,18 +10,12 @@ spring:
   messages:
     basename: exceptions
   cloud:
-    openfeign:
-      client:
-        config:
-          timeProvider:
-            logger-level: basic
     stream:
-      #      kafka:
-      #        binder:
-      #          brokers: localhost:9092
+#      kafka:
+#        binder:
+#          brokers: localhost:9092
       bindings:
         payments-out-0:
           destination: payment-events
 api:
-  time: https://timeapi.io/api/time/current/zone?timeZone=Europe%2FWarsaw
-
+  time: http://worldtimeapi.org/api/timezone/Europe/Warsaw

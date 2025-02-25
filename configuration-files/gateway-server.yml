@@ -7,19 +7,22 @@ spring:
             - Path=/api/shop/**
           uri: lb://SHOP-SERVICE
           filters:
-            - RewritePath=/api/shop(?<segment>.*),$\{segment}
+            - RewritePath=/api/shop(?<segment>.*), $\{segment}
             - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
-            - RequestLogger=info,loggerFilter
+            - RequestLogger=info,loggingFilter
             - RequestTime=8:00,17:00
-      #discovery:
-      #  locator:
-      #     enabled: true
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:4200"
-            allowedMethods:
-              - GET
-              - POST
-              - PUT
-              - DELETE
+#spring:
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "http://localhost:4200"
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
