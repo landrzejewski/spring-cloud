@@ -5,6 +5,6 @@ spring:
     import: optional:configserver:http://configuration-server-one:8888,optional:configserver:http://configuration-server-two:8888
   cloud:
     config:
-      label: 10-k8s
+      label: 09-k8s
       fail-fast: true
 

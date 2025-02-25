@@ -1,30 +1,10 @@
-#spring:
-#  application:
-#    name: payments-service
-#  config:
-#    import: optional:configserver:http://configuration-server-one:8888,optional:configserver:http://configuration-server-two:8888
-#  cloud:
-#    config:
-#      label: 10-k8s
-#      fail-fast: true
 spring:
-  datasource:
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    generate-ddl: true
-    open-in-view: false
-  messages:
-    basename: exceptions
+  application:
+    name: payments-service
+  config:
+    import: optional:configserver:http://configuration-server-one:8888,optional:configserver:http://configuration-server-two:8888
   cloud:
-    stream:
-      kafka:
-        binder:
-          brokers: kafka-service:9092
-      bindings:
-        payments-out-0:
-          destination: payment-events
-api:
-  time: http://worldtimeapi.org/api/timezone/Europe/Warsaw
-logging:
-  level:
-    org.javamoney.moneta: OFF
+    config:
+      label: 09-k8s
+      fail-fast: true
+
