@@ -8,4 +8,4 @@ spring:
       client:
         config:
           PAYMENTS-SERVICE: #default:
-            logger-level: basic
+            logger-level: headers

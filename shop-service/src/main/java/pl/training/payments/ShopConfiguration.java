@@ -2,6 +2,7 @@ package pl.training.payments;
 
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -12,6 +13,7 @@ import pl.training.payments.domain.ConstantDiscountCalculator;
 import pl.training.payments.domain.OrderProcessor;
 import pl.training.payments.ports.PaymentService;
 import pl.training.payments.ports.ShopService;
+import pl.training.payments.security.RestTemplateTokenInterceptor;
 
 @EnableFeignClients
 @Log
@@ -32,7 +34,9 @@ public class ShopConfiguration {
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
-        return new RestTemplate();
+        return new RestTemplateBuilder()
+                .additionalInterceptors(new RestTemplateTokenInterceptor())
+                .build();
     }
 
 }
