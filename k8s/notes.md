@@ -22,7 +22,7 @@ https://docs.docker.com/engine/reference/commandline/cli
 https://docs.docker.com/engine/install/debian
 https://hub.docker.com
 
-https://drive.google.com/drive/folders/1l81mOU3cW7IMR3uvnSr4srxJr3mC_Ert?usp=sharing
+https://drive.google.com/file/d/1gjvWyX10XM4XEGQ_kSrR27k-dCOXj70y/view?usp=drive_link
 
 https://computingforgeeks.com/install-kubernetes-cluster-on-debian-12-bookworm
 https://killer.sh
