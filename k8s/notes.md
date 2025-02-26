@@ -10,6 +10,13 @@ https://www.manning.com/books/kubernetes-in-action-second-edition
 https://www.manning.com/books/istio-in-action
 https://www.manning.com/books/bootstrapping-microservices-with-docker-kubernetes-and-terraform-second-edition
 
+https://www.manning.com/books/spring-microservices-in-action-second-edition
+https://www.manning.com/books/spring-security-in-action-second-edition
+https://www.manning.com/books/oauth-2-in-action
+https://www.manning.com/books/microservices-patterns
+https://www.manning.com/books/microservices-security-in-action
+https://leanpub.com/get-your-hands-dirty-on-clean-architecture
+
 Linki
 https://docs.docker.com/engine/reference/commandline/cli
 https://docs.docker.com/engine/install/debian
