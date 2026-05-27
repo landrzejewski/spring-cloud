@@ -21,6 +21,8 @@
         <module>payments-service</module>
         <module>payments-domain</module>
         <module>configuration-server</module>
+        <module>discovery-server</module>
+        <module>gateway-server</module>
     </modules>
 
 </project>
