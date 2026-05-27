@@ -63,3 +63,7 @@ POST http://localhost:8888/decrypt
 Content-Type: text/plain
 
 ae0d9b87c6c7aae3daf5adcbfc48372234dc3d073acee2391334bced7b94de05
+
+###
+
+GET http://localhost:8888/03-Gateway-server/shop-service.properties
