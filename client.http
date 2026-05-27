@@ -67,3 +67,19 @@ ae0d9b87c6c7aae3daf5adcbfc48372234dc3d073acee2391334bced7b94de05
 ###
 
 GET http://localhost:8888/03-Gateway-server/shop-service.properties
+
+###
+
+POST http://localhost:2000/orders
+Accept: application/json
+Content-Type: application/json
+
+{
+  "entries": [
+    {
+      "productId": 1,
+      "quantity": 10,
+      "price": 1000
+    }
+  ]
+}
