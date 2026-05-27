@@ -49,3 +49,17 @@ Content-Type: application/json
 {
   "value": "200 PLN"
 }
+
+###
+
+POST http://localhost:8888/encrypt
+Content-Type: text/plain
+
+Hello
+
+###
+
+POST http://localhost:8888/decrypt
+Content-Type: text/plain
+
+ae0d9b87c6c7aae3daf5adcbfc48372234dc3d073acee2391334bced7b94de05
