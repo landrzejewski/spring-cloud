@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: configuration-server
+  profiles:
+    active: git, jdbc
   cloud:
     config:
       server:
@@ -10,7 +12,16 @@ spring:
           uri: https://github.com/landrzejewski/spring-cloud
           search-paths: configuration-files
           # skip-ssl-validation: true
-#        encrypt:
+          order: 0
+        #        encrypt:
 #          enabled: false
+        jdbc:
+          sql: "SELECT prop_key, prop_value from properties where application=? and profile=? and label=?"
+          order: 1
+  datasource:
+    url: jdbc:h2:file:./data/configuration-development.db;DB_CLOSE_ON_EXIT=FALSE
+    username: admin
+    password: admin
+    driver-class-name: org.h2.Driver
 encrypt:
   key: JYMMETRICJEYP
