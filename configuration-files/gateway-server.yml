@@ -11,7 +11,7 @@ spring:
               filters:
                 - RewritePath=/api/shop(?<segment>.*),$\{segment}
                 - RewriteLocationResponseHeader=AS_IN_REQUEST, Location, localhost:8080/api/shop
-                - WorkTime=09:00,12:00
+                - WorkTime=09:00,17:00
       #discovery:
       #  locator:
       #     enabled: true
