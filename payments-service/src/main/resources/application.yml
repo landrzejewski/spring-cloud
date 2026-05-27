@@ -5,5 +5,5 @@ spring:
     import: optional:configserver:http://localhost:8888,optional:configserver:http://localhost:8889
   cloud:
     config:
-      label: 02-Discovery-server
+      label: 03-Gateway-server
       # fail-fast: true
