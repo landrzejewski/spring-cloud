@@ -1,7 +1,7 @@
 logging:
   level:
+    #org.springframework.web.client.RestTemplate: DEBUG
     pl.training: DEBUG
-#    org.springframework.web.client.RestTemplate: DEBUG;
 spring:
   cloud:
     openfeign:
