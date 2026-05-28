@@ -70,9 +70,10 @@ GET http://localhost:8888/03-Gateway-server/shop-service.properties
 
 ###
 
-POST http://localhost:8080/api/shop/orders
+POST http://localhost:20000/orders
 Accept: application/json
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "entries": [
