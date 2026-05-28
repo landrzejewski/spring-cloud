@@ -9,7 +9,7 @@ spring:
                 - Path=/api/shop/**
               uri: lb://SHOP-SERVICE
               filters:
-              - RewritePath=/api/shop(?<segment>.*), $\{segment}
+                - RewritePath=/api/shop(?<segment>.*),$\{segment}
 #spring:
 #  cloud:
 #    gateway:
