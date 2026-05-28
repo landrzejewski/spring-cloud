@@ -1,6 +1,7 @@
 POST http://localhost:10000/payments
 Accept: application/json
 Content-Type: application/json
+Authorization: bearer {{token}}
 
 {
   "value": "200 PLN"
