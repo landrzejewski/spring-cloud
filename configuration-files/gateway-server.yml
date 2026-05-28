@@ -1,14 +1,15 @@
 spring:
   cloud:
     gateway:
-      mvc:
-        routes:
-          - id: shop-route
-            predicates:
-              - Path=/api/shop/**
-            uri: lb://SHOP-SERVICE
-            filters:
-              - RewritePath=/api/shop(?<segment>.*),$\{segment}
+      server:
+        webflux:
+          routes:
+            - id: shop-route
+              predicates:
+                - Path=/api/shop/**
+              uri: lb://SHOP-SERVICE
+              filters:
+                - RewritePath=/api/shop(?<segment>.*),$\{segment}
       #discovery:
       #  locator:
       #     enabled: true
