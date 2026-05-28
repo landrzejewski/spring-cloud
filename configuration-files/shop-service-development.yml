@@ -7,5 +7,5 @@ spring:
     openfeign:
       client:
         config:
-          PAYMENTS_SERVICE: #default:
+          PAYMENTS-SERVICE: #default:
             logger-level: basic
