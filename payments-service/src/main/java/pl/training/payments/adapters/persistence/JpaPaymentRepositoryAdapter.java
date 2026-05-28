@@ -13,7 +13,7 @@ import pl.training.payments.ports.PaymentRepository;
 
 import java.util.Optional;
 
-@Transactional(propagation = Propagation.MANDATORY)
+@Transactional
 @Repository
 @RequiredArgsConstructor
 public class JpaPaymentRepositoryAdapter implements PaymentRepository {
