@@ -6,7 +6,7 @@ api:
 spring:
   cloud:
     function:
-      definition: paymentEventConsumer
+      definition: blockedTokenConsumer
     stream:
       bindings:
         paymentEventConsumer-in-0:
