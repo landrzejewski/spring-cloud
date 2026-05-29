@@ -16,12 +16,12 @@ spring:
         jwt:
           issuer-uri: http://localhost:8100/realms/training
  # oauth2 login/client
-#      client:
-#        registration:
-#          keycloak:
-#            client-id: training-client
-#            scope:
-#              - openid
-#        provider:
-#          keycloak:
-#            issuer-uri: http://localhost:8100/realms/training
+      client:
+        registration:
+          keycloak:
+            client-id: training-client
+            scope:
+              - openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8100/realms/training

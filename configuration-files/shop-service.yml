@@ -6,19 +6,19 @@ api:
 spring:
   cloud:
     function:
-      definition: blockedTokenConsumer
+      definition: paymentEventConsumer
     stream:
       bindings:
-#        paymentEventConsumer-in-0:
-#          destination: payment-events
-#          group: ${random.uuid} #shop
-#          properties:
-#            spring.json.trusted.packages: pl.training.payments.adapters.events
+        paymentEventConsumer-in-0:
+          destination: payment-events
+          group: ${random.uuid} #shop
+          properties:
+            spring.json.trusted.packages: pl.training.payments.adapters.events
         blockedTokenConsumer-in-0:
           destination: blocked-tokens
           group: ${random.uuid} #shop
           properties:
-            spring.json.trusted.packages: pl.training.events
+            spring.json.trusted.packages: pl.training.events.BlockedToken
 #    stream:
 #      bindings:
 #        productsListener-in-0:

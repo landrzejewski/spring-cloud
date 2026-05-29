@@ -23,8 +23,9 @@ public class SecurityConfiguration {
                 .addFilterBefore(new BlockedTokenFilter(), BearerTokenAuthenticationFilter.class)
                 .csrf(AbstractHttpConfigurer::disable)
                 .oauth2ResourceServer(config -> config.jwt(this::jwtConfig))
+                .oauth2Login(config -> {})
                 .authorizeHttpRequests(config -> config
-                        .anyRequest().hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 )
                 .build();
     }
