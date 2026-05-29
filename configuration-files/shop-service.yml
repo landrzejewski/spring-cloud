@@ -18,7 +18,7 @@ spring:
           destination: blocked-tokens
           group: ${random.uuid} #shop
           properties:
-            spring.json.trusted.packages: pl.training.events.BlockedToken
+            spring.json.trusted.packages: pl.training.events
 #    stream:
 #      bindings:
 #        productsListener-in-0:
