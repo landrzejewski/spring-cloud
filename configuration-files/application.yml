@@ -9,17 +9,6 @@ eureka:
     instance:
       hostname: localhost
 # resource server
-spring:
-  cloud:
-    function:
-      definition: blockedTokenConsumer
-    stream:
-      bindings:
-        blockedTokenConsumer-in-0:
-          destination: blocked-tokens
-          group: ${random.uuid} #shop
-          properties:
-            spring.json.trusted.packages: pl.training.events.BlockedToken
   security:
     oauth2:
       resourceserver:

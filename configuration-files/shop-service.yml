@@ -14,6 +14,11 @@ spring:
           group: ${random.uuid} #shop
           properties:
             spring.json.trusted.packages: pl.training.payments.adapters.events
+        blockedTokenConsumer-in-0:
+          destination: blocked-tokens
+          group: ${random.uuid} #shop
+          properties:
+            spring.json.trusted.packages: pl.training.events.BlockedToken
 #    stream:
 #      bindings:
 #        productsListener-in-0:
