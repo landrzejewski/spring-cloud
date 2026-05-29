@@ -20,8 +20,6 @@ spring:
           group: ${random.uuid} #shop
           properties:
             spring.json.trusted.packages: pl.training.events.BlockedToken
-        blocked-tokens-out-0:
-          destination: blocked-tokens
   security:
     oauth2:
       resourceserver:
