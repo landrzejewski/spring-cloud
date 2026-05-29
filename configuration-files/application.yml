@@ -9,6 +9,7 @@ eureka:
     instance:
       hostname: localhost
 # resource server
+spring:
   security:
     oauth2:
       resourceserver:
