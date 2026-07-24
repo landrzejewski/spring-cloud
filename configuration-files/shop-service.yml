@@ -1,6 +1,6 @@
 server:
   port: 20000
-discount: 70
+discount: 20
 api:
   payments: http://PAYMENTS-SERVICE/payments
 spring:
