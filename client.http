@@ -48,7 +48,7 @@ GET http://localhost:8888/application/default/dev/data.xml
 
 ###
 
-POST http://localhost:8200/api/shop/payments
+POST http://localhost:8080/api/shop/payments
 Accept: application/json
 Content-Type: application/json
 
