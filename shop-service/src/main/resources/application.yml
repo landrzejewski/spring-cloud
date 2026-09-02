@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: shop-service
+  config:
+    import:
+      - configserver:http://localhost:8888
+      - configserver:http://localhost:8889
+  cloud:
+    config:
+      label: dev
+      fail-fast: true

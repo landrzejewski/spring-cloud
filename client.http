@@ -40,7 +40,7 @@ GET http://localhost:8888/dev/application-development.json
 
 ###
 
-GET http://localhost:8888/dev/payments-service.properties
+GET http://localhost:8888/dev/payments-service-development.properties
 
 ###
 
