@@ -69,3 +69,7 @@ POST localhost:8888/decrypt
 Content-Type: text/plain
 
 f8f719fe864c1f22d3c481184766889266f7928cc6f2803ae333dab7f46a37ea
+
+###
+
+GET http://localhost:8888/dev/shop-service.properties
