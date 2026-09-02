@@ -1,3 +1,3 @@
 server:
   port: 20000
-discount: 20
+discount: "{cipher}f8f719fe864c1f22d3c481184766889266f7928cc6f2803ae333dab7f46a37ea"
