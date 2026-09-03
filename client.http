@@ -76,7 +76,7 @@ GET http://localhost:8888/dev/shop-service.properties
 
 ###
 
-POST http://localhost:20000/orders
+POST http://localhost:8080/api/shop/orders
 Accept: application/json
 Content-Type: application/json
 Authorization: bearer {{token}}
