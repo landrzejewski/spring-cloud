@@ -1,5 +1,16 @@
 server:
   port: 20000
-discount: "{cipher}f8f719fe864c1f22d3c481184766889266f7928cc6f2803ae333dab7f46a37ea"
+discount: 20
 api:
   payments: http://PAYMENTS-SERVICE/payments
+spring:
+  cloud:
+    function:
+      definition: paymentEventConsumer
+    stream:
+      bindings:
+        paymentEventConsumer-in-0:
+          destination: payment-events
+          group: ${random.uuid} #shop
+          properties:
+            spring.json.trusted.packages: pl.training.payments.adapters.events
